@@ -18,6 +18,9 @@ class InputText extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         label: Text(label),
+        labelStyle: const TextStyle(
+          color: Colors.white60,
+        ),
         focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(16.0)),
           borderSide: BorderSide(

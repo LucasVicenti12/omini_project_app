@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_chat/shared/components/button.dart';
 import 'package:my_chat/shared/components/input_password.dart';
 import 'package:my_chat/shared/components/input_text.dart';
 
@@ -17,8 +18,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    toRegisterPage(){
+    toRegisterPage() {
       Navigator.pushNamed(context, "/register");
     }
 
@@ -34,11 +34,21 @@ class LoginPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      const Text(
+                        "Login",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24.0,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
                       InputText(
                         controller: _userNameKey,
                         label: "Username",
-                        validator: (String? value){
-                          if(value!.isEmpty){
+                        validator: (String? value) {
+                          if (value!.isEmpty) {
                             return "Inform the username";
                           }
                           return null;
@@ -50,8 +60,8 @@ class LoginPage extends StatelessWidget {
                       InputPassword(
                         controller: _passwordKey,
                         label: "Password",
-                        validator: (String? value){
-                          if(value!.isEmpty){
+                        validator: (String? value) {
+                          if (value!.isEmpty) {
                             return "Inform the password";
                           }
                           return null;
@@ -63,26 +73,16 @@ class LoginPage extends StatelessWidget {
               ),
               Column(
                 children: [
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          submit(
-                              _userNameKey.value.text, _passwordKey.value.text);
-                        }
-                      },
-                      child: const Text(
-                        "Login",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
+                  Button(
+                    onClick: () {
+                      if (_formKey.currentState!.validate()) {
+                        submit(
+                            _userNameKey.value.text, _passwordKey.value.text);
+                      }
+                    },
+                    label: "Login",
+                    type: ButtonType.action,
+                    fullWidth: true,
                   ),
                   const SizedBox(
                     height: 20.0,
@@ -97,7 +97,7 @@ class LoginPage extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
-                          "Or if you don't have an account",
+                          "Or if you don't have account",
                           style: TextStyle(
                             fontSize: 12,
                           ),
@@ -113,21 +113,11 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(
                     height: 20.0,
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      onPressed: toRegisterPage,
-                      child: const Text(
-                        "Create an account",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
+                  Button(
+                    onClick: toRegisterPage,
+                    label: "Create an account",
+                    type: ButtonType.normal,
+                    fullWidth: true,
                   ),
                 ],
               ),
