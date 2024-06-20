@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_chat/shared/theme/theme_controller.dart';
+import 'package:my_chat/ui/general_page.dart';
 import 'package:my_chat/ui/login_page.dart';
 import 'package:my_chat/ui/register_page.dart';
 
@@ -19,7 +20,8 @@ class RouterManager extends StatelessWidget {
       initialRoute: '/login',
       routes: {
         '/login': (_) => LoginPage(),
-        '/register': (_) => const RegisterPage(),
+        '/register': (_) => RegisterPage(),
+        '/home': (_) => const GeneralPage(),
       },
     );
   }

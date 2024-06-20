@@ -11,15 +11,16 @@ class LoginPage extends StatelessWidget {
   final TextEditingController _userNameKey = TextEditingController();
   final TextEditingController _passwordKey = TextEditingController();
 
-  submit(String userName, String password) {
-    print(userName);
-    print(password);
-  }
-
   @override
   Widget build(BuildContext context) {
     toRegisterPage() {
       Navigator.pushNamed(context, "/register");
+    }
+
+    submit() {
+      if (_userNameKey.text == 'lucas' && _passwordKey.text == 'senha') {
+        Navigator.pushNamed(context, "/home");
+      }
     }
 
     return Scaffold(
@@ -76,8 +77,7 @@ class LoginPage extends StatelessWidget {
                   Button(
                     onClick: () {
                       if (_formKey.currentState!.validate()) {
-                        submit(
-                            _userNameKey.value.text, _passwordKey.value.text);
+                        submit();
                       }
                     },
                     label: "Login",
